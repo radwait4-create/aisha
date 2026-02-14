@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Aisha 💖</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 100px;
+            font-size: 3em;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff; }
+            to { text-shadow: 0 0 25px #fff; }
+        }
+
+        .button {
+            padding: 15px 35px;
+            margin: 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        #yesBtn {
+            background-color: white;
+            color: #ff4d6d;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #222;
+            color: white;
+            position: absolute;
+            left: 55%;
+            top: 60%;
+        }
+
+        .message {
+            margin-top: 40px;
+            font-size: 2em;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="title"></h1>
+
+<button class="button" id="yesBtn">Yes 😍</button>
+<button class="button" id="noBtn">No 😢</button>
+
+<div class="message" id="message"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const text = "Aisha 💖, Will You Be My Valentine?";
+    let i = 0;
+    const speed = 70;
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("title").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    noBtn.addEventListener("mouseover", function() {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", function() {
+        document.getElementById("message").innerHTML =
+        "YAYYYY 💖 Aisha you just made me the happiest person alive!! 💕✨";
+
+        for (let i = 0; i < 50; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
